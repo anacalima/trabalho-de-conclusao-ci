@@ -1,0 +1,47 @@
+name: Pipeline Conclusão de Matéria (CI)
+
+# Aqui dizemos quando a pipeline deve rodar:
+on:
+  push:
+    branches:
+      - main
+      - master
+  
+  # Permite que você aperte um botão para rodar os testes manualmente
+  workflow_dispatch:
+
+  # Executa sozinho a cada 10 minutos
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  test-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Passo 1: Baixar o código do seu repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # Passo 2: Simular os testes rodando com sucesso
+      - name: Executar Testes Fakes com Sucesso
+        run: |
+          echo "Iniciando os testes automatizados..."
+          echo "Teste 1: Login - PASSOU"
+          echo "Teste 2: Cadastro - PASSOU"
+          echo "Todos os testes foram executados com sucesso!"
+
+      # Passo 3: Criar um relatório de teste de mentirinha
+      - name: Gerar Relatório de Teste
+        run: |
+          mkdir relatorio-pasta
+          echo "<h1>Relatório de Testes da Pós</h1><p>Status: Sucesso!</p>" > relatorio-pasta/index.html
+
+      # Passo 4: Salvar o relatório dentro do GitHub Actions
+      - name: Upload do Relatório de Testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: meu-relatorio-de-testes
+          path: relatorio-pasta/
+          retention-days: 7
