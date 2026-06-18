@@ -35,7 +35,7 @@ jobs:
       - name: Gerar Relatório de Teste
         run: |
           mkdir relatorio-pasta
-          echo "<h1>Relatório de Testes 2 - Treinando...</h1><p style='color: #8a2be2; font-weight: bold;'>Status: Sucesso! Ana Caroline arrasou nessa pipeline</p>" >" > relatorio-pasta/index.html
+          echo "<h1>Relatório de Testes 2 - Treinando...</h1><p style='color: #8a2be2; font-weight: bold;'>Status: Sucesso! Ana Caroline arrasou nessa pipeline</p>" > relatorio-pasta/index.html
 
       # Passo 4: Salvar o relatório dentro do GitHub Actions
       - name: Upload do Relatório de Testes
