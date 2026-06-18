@@ -10,9 +10,9 @@ on:
   # Permite que você aperte um botão para rodar os testes manualmente
   workflow_dispatch:
 
-  # Executa sozinho a cada 10 minutos
+  # Executa sozinho todos os dias as 2h UTC
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '0 2 * * *'
 
 jobs:
   test-automation:
@@ -35,7 +35,7 @@ jobs:
       - name: Gerar Relatório de Teste
         run: |
           mkdir relatorio-pasta
-          echo "<h1>Relatório de Testes da Pós</h1><p>Status: Sucesso!</p>" > relatorio-pasta/index.html
+          echo "<h1>Relatório de Testes 2 - Treinando...</h1><p style='color: #8a2be2; font-weight: bold;'>Status: Sucesso! Ana Caroline arrasou nessa pipeline</p>" >" > relatorio-pasta/index.html
 
       # Passo 4: Salvar o relatório dentro do GitHub Actions
       - name: Upload do Relatório de Testes
